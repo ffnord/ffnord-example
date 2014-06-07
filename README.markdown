@@ -34,6 +34,8 @@ infrastructure.
  * IPv4 Network:     10.35.0.0/16
  * IPv4 Mesh Subnet: 10.35.0.0/19 Netmask: 255.255.224.0
 
+ * Port used for VPN: 10035
+
  * Existing Gateway Servers:
    * GC-GW0: IPv4 10.35.0.1    IPv6 fd35:f308:a922::ff00
    * GC-GW1: IPv4 10.35.5.1    IPv6 fd35:f308:a922::ff01
@@ -63,6 +65,8 @@ infrastructure.
  * IPv4 Network:     10.3.0.0/16 
  * IPv4 Mesh Subnet: 10.3.0.0/17 Netmask 255.255.128.0
 
+ * Port used for VPN: 10003
+
  * Existing Gateway Servers:
    * MP-GW0: IPv4 10.3.0.1    IPv6 fd03:5fcf:9003::ff00
    * MP-GW1: IPv4 10.3.8.1    IPv6 fd03:5fcf:9003::ff01
@@ -81,11 +85,13 @@ infrastructure.
  * Site Code: FFSV
  * Site TLD:  .ffsv
 
- * IPv6 ULA:         fdd7:e0f1:4128::/48
+ * IPv6 ULA:         fdd7:e0f1:4128::/48 
  * IPv6 Mesh Prefix: fdd7:e0f1:4128::/64
 
  * IPv4 Network:     10.215.0.0/16
- * IPv4 Mesh Subnet: 10.215.0.0/22
+ * IPv4 Mesh Subnet: 10.215.0.0/19 Netmask 255.255.224.0
+ 
+ * Port used for VPN: 10215
 
  * Existing Gateway Servers:
    * SV-GW0: (MP-GW0) IPv4: 10.215.0.1  IPv6: fdd7:e0f1:4128::ff00
