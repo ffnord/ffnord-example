@@ -1,7 +1,7 @@
 #!/bin/sh
 
 # fetch firstboot archive
-/usr/bin/wget -O /root/firstboot.tar http://LIBVIRT_NETWORK_ADDRESS:HTTP_PORT/firstboot.tar
+/usr/bin/wget -O /root/firstboot.tar http://LIBVIRT_NETWORK_ADDRESS:HTTP_PORT/HOSTNAME/firstboot.tar
 tar xf /root/firstboot.tar -C /root/
 
 # create a service that will run our firstboot script

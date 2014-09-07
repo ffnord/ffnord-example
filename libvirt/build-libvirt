@@ -10,16 +10,17 @@ HTTP_PORT=${HTTP_PORT:-8080}
 
 preseed_tar() {
   local name=$1
-  tar cf "webroot/${name}/firstboot.tar" firstboot -C machines/${name}/ $(find machines/${name}/ -printf "%P\n")
+  mkdir -p "webroot/${name}/"
+  tar cf "webroot/${name}/firstboot.tar" firstboot icvpn icvpn-meta -C machines/${name}/ $(find -L "machines/${name}/" -type f -printf "%P\n")
 }
 
 preseed_debian(){
   local name=$1
   mkdir -p "webroot/${name}/"
   cat debian_preseed.cfg |\
-    sed -r "s/HOSTNAME/${name}/" |\
     sed -r "s/DEBIAN_MIRROR_HOSTNAME/${DEBIAN_MIRROR_HOSTNAME}/" |\
     sed -r "s/LIBVIRT_NETWORK_ADDRESS/${LIBVIRT_NETWORK_ADDRESS}/" |\
+    sed -r "s/HOSTNAME/${name}/" |\
     sed -r "s/HTTP_PORT/${HTTP_PORT}/" \
     > "webroot/${name}/debian_preseed.cfg"
 }

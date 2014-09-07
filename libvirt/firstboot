@@ -15,4 +15,12 @@ git clone https://github.com/ffnord/ffnord-puppet-gateway.git ffnord
 cd /root
 puppet apply manifest.pp
 
+cat /etc/network/interface.d/interconnect << EOF
+auto eth0.22
+iface eth0.22 inet static
+  address $(cat /root/address)
+  netmask 255.255.255.0
+  vlan-raw-device eth0
+EOF
+
 update-rc.d firstboot remove
