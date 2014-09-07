@@ -27,6 +27,7 @@ infrastructure.
 
  * Site Code: FFGC
  * Site TLD:  .ffgc
+ * Site AS:   65035
 
  * IPv6 ULA:         fd35:f308:a922::/48
  * IPv6 Mesh Prefix: fd35:f308:a922::/64
@@ -58,6 +59,7 @@ infrastructure.
 
  * Site Code: FFMP
  * Site TLD:  .ffmp
+ * Site AS:   65003
 
  * IPv6 ULA:         fd03:5fcf:9003::/48
  * IPv6 Mesh Prefix: fd03:5fcf:9003::/64
@@ -84,6 +86,7 @@ infrastructure.
 
  * Site Code: FFSV
  * Site TLD:  .ffsv
+ * Site AS:   65215
 
  * IPv6 ULA:         fdd7:e0f1:4128::/48 
  * IPv6 Mesh Prefix: fdd7:e0f1:4128::/64
