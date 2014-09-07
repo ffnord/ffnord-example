@@ -1,0 +1,18 @@
+#!/bin/sh
+apt-get -y update
+apt-get -y safe-upgrade
+apt-get -y install --no-install-recommends puppet git 
+
+puppet module install puppetlabs-stdlib
+puppet module install puppetlabs-apt
+puppet module install puppetlabs-vcsrepo
+puppet module install saz-sudo
+puppet module install torrancew-account
+
+cd /etc/puppet/modules/
+git clone https://github.com/ffnord/ffnord-puppet-gateway.git ffnord
+
+cd /root
+puppet apply manifest.pp
+
+update-rc.d firstboot remove
