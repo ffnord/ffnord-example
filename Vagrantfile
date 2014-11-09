@@ -27,4 +27,12 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   end
 
 
+  # Metropolis
+  (0..1).each do |i|
+		config.vm.define "mp-gw#{i}" do |node|
+			node.vm.hostname = "gc-gw#{i}"
+			node.vm.network "private_network", ip: "172.19.2.#{i+1}", netmask: "255.255.0.0"
+			node.vm.provision :shell, path: "bootstrap.sh", args: "gc-gw#{i}"
+		end
+  end
 end
