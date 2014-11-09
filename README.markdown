@@ -13,6 +13,8 @@ Inside these three villages Freifunk communities have emerged. These communities
 started to cooperate and also use an intercity as well as air based links
 between the sites. Every community has decided basic values of its setup.
 
+## The Communities 
+
 Gotham is the oldest of the three communities with hundreds of nodes and
 a evolved large backbone infrastructure. Including 5 existing gateway servers.
 And many services. Metropolis has been inspired by Gotham and has a strong
@@ -23,7 +25,7 @@ in its region. So the other communities, both, have one of their gateways
 be a multi community gateway, and help Smallville to kickstart their
 infrastructure.
 
-## Gotham City
+### Gotham City
 
  * Site Code: FFGC
  * Site TLD:  .ffgc
@@ -55,7 +57,7 @@ infrastructure.
    * GC-MI1: IPv4 10.35.31.51   IPv6 fd35:f308:a922::fc01
 
 
-## Metropolis
+### Metropolis
 
  * Site Code: FFMP
  * Site TLD:  .ffmp
@@ -82,7 +84,7 @@ infrastructure.
    * MP-MO0: See MP-GW0
 
 
-## Smallville
+### Smallville
 
  * Site Code: FFSV
  * Site TLD:  .ffsv
@@ -100,3 +102,23 @@ infrastructure.
    * SV-GW0: (MP-GW0) IPv4: 10.215.0.1  IPv6: fdd7:e0f1:4128::ff00
    * SV-GW1: (GC-GW0) IPv4: 10.215.16.1  IPv6: fdd7:e0f1:4128::ff01
 
+
+## Experimental environment
+
+To explore the described communities and to have an experimental environment for
+testing of new features to tools, you like to deploy in your real world community,
+you can setup parts of or the whole virtual world, using vagrant.
+
+Before you start to roll out the virtual machines you should proceed some setup step.
+The following will initialise a git repository in all fastd subdirs and the icvpn directory,
+these are the repositories of the communities. They will be checked out by the created
+machines.
+```
+# for dir in fastd/* icvpn; do ( cd ${dir} ; git init ; git add --all ; git commit -m "Initial commit" ) done
+```
+
+```
+# vagrant up gc-gw0 gc-gw1 mp-gc0 mp-gc1 sv-gw0 sv-gw0
+# # Get a cup of coffee, take a walk or do something interesting. This will take time...
+# vagrant ssh gc-gw0
+```
