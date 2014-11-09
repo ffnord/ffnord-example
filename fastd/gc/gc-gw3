@@ -1,0 +1,4 @@
+# Secret: e86437b7b88670f350ffd7e90d05422f86610af2c6cd4b7e15039c07e0cfce53
+# Public: 0b95ce765ae7432bf466de59fca46adfdf98f4b5d3efe8cfea40974346bf2f2d
+key "0b95ce765ae7432bf466de59fca46adfdf98f4b5d3efe8cfea40974346bf2f2d";
+remote ipv4 "172.19.1.4" port 10035;
