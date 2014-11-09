@@ -13,6 +13,10 @@ Inside these three villages Freifunk communities have emerged. These communities
 started to cooperate and also use an intercity as well as air based links
 between the sites. Every community has decided basic values of its setup.
 
+Furthermore we rollout configuration details and with the help of vagrant,
+are able to instantiate parts of the machines described below. So we
+have a nearly full featured multi-community environment to experiment with.
+
 ## The Communities 
 
 Gotham is the oldest of the three communities with hundreds of nodes and
@@ -117,8 +121,12 @@ machines.
 # for dir in fastd/* icvpn; do ( cd ${dir} ; git init ; git add --all ; git commit -m "Initial commit" ) done
 ```
 
+Now we can rollout some of the machines.
+
 ```
 # vagrant up gc-gw0 gc-gw1 mp-gc0 mp-gc1 sv-gw0 sv-gw0
 # # Get a cup of coffee, take a walk or do something interesting. This will take time...
 # vagrant ssh gc-gw0
 ```
+
+If you like to change the way machines are deployed, you can manipulate the _bootstrap.sh_.
