@@ -15,7 +15,7 @@ deb-src http://ftp.de.debian.org/debian wheezy-updates main contrib
 EOF
 
 apt-get update
-apt-get install --no-install-recommends -y puppet git tcpdump mtr-tiny
+apt-get install --no-install-recommends -y puppet git tcpdump mtr-tiny vim
 
 puppet module install puppetlabs-stdlib
 puppet module install puppetlabs-apt
