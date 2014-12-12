@@ -1,6 +1,8 @@
 #!/usr/bin/env bash
 
 MACHINE=$1
+FFNORD_TESTING_REPO=
+FFNORD_TESTING_BRANCHES=()
 
 cat > /etc/apt/sources.list << EOF
 deb http://ftp.de.debian.org/debian wheezy main
@@ -23,6 +25,16 @@ puppet module install puppetlabs-vcsrepo
 
 cd /etc/puppet/modules
 git clone https://github.com/ffnord/ffnord-puppet-gateway ffnord
+
+if [ "x${FFNORD_TESTING_REPO}" != "x" ]; then
+  cd ffnord
+  git remote add testing "$FFNORD_TESTING_REPO"
+  git fetch testing
+  for branch in ${FFNORD_TESTING_REPO}; do
+  for branch in ${FFNORD_TESTING_BRANCHES}; do
+    git merge --no-ff "testing/${branch}"
+  done
+fi
 
 cd "/vagrant/machines/${MACHINE}/"
 cp * /root
