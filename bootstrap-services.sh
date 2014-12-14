@@ -23,7 +23,7 @@ cd "/vagrant/machines/services/"
 
 # Setup openvpn service
 cp -r openvpn /etc/openvpn/vpn-service
-ln -s /etc/openvpn/vpn-service/server.conf ../vpn-service.conf
+ln -s /etc/openvpn/vpn-service/server.conf /etc/openvpn/vpn-service.conf
 service openvpn restart
 update-rc.d -f openvpn defaults
 
