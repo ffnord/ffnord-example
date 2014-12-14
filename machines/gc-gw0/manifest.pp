@@ -13,6 +13,7 @@ ffnord::mesh { 'mesh_ffgc':
   mesh_mac         => "de:ad:be:ef:ff:00",
   mesh_ipv6        => "fd35:f308:a922::ff00/64",
   mesh_ipv4        => "10.35.0.1/19",
+  range_ipv4       => "10.35.0.0/16",
   mesh_peerings    => "/root/mesh_peerings.yaml",
 
   fastd_secret     => "/root/fastd_secret.conf",
@@ -23,7 +24,7 @@ ffnord::mesh { 'mesh_ffgc':
   dns_servers => [ '10.35.5.1', '10.35.10.1', '10.35.15.1', '10.35.20.1' ],
 }
 
-ffnord::bird6::icvpn { 'gotham_city0':
+ffnord::icvpn::setup { 'gotham_city0':
   icvpn_as           => 65035,
   icvpn_ipv4_address => "10.0.1.1",
   icvpn_ipv6_address => "fec0::a:cf:0:35",

@@ -23,7 +23,7 @@ ffnord::mesh { 'mesh_ffgc':
   dns_servers => [ '10.35.0.1', '10.35.10.1', '10.35.15.1', '10.35.20.1' ],
 }
 
-ffnord::bird6::icvpn { 'gotham_city1':
+ffnord::icvpn::setup { 'gotham_city1':
   icvpn_as           => 65035,
   icvpn_ipv4_address => "10.112.0.1",
   icvpn_ipv6_address => "fec0::a:cf:0:35",
