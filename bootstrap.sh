@@ -37,7 +37,7 @@ if [ "x${FFNORD_TESTING_REPO}" != "x" ]; then
 fi
 
 cd "/vagrant/machines/${MACHINE}/"
-cp * /root
+cp -r * /root
 cd /root
 puppet apply manifest.pp --verbose
 
