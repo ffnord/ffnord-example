@@ -1,0 +1,76 @@
+Certificate:
+    Data:
+        Version: 3 (0x2)
+        Serial Number: 1 (0x1)
+    Signature Algorithm: sha1WithRSAEncryption
+        Issuer: C=US, ST=CA, L=SanFrancisco, O=Fort-Funston, OU=changeme, CN=changeme/name=changeme/emailAddress=mail@host.domain
+        Validity
+            Not Before: Dec 14 14:34:13 2014 GMT
+            Not After : Dec 11 14:34:13 2024 GMT
+        Subject: C=US, ST=CA, L=SanFrancisco, O=Fort-Funston, OU=changeme, CN=neutron/name=changeme/emailAddress=mail@host.domain
+        Subject Public Key Info:
+            Public Key Algorithm: rsaEncryption
+                Public-Key: (1024 bit)
+                Modulus:
+                    00:b0:9a:19:12:14:3c:8e:49:05:ed:d5:8b:be:81:
+                    d9:7e:1d:a4:9f:95:3b:86:eb:04:15:ed:74:7e:0d:
+                    02:1d:60:88:e3:f3:dc:ad:74:b8:a5:2b:91:49:1f:
+                    6e:3e:dc:69:6f:8a:6e:ea:e5:a3:26:fd:3a:1e:f3:
+                    65:d2:a6:79:08:83:01:ef:c3:47:f5:3c:6a:2b:8d:
+                    bd:0a:97:4d:15:8a:0e:1e:78:62:d7:22:de:c5:a2:
+                    55:68:ef:b8:1e:c5:53:eb:34:29:ad:4e:0a:6c:16:
+                    0c:e6:3e:a5:5d:3b:8c:d9:dc:55:3c:d2:84:99:18:
+                    a3:73:f9:ba:50:e4:74:b3:d1
+                Exponent: 65537 (0x10001)
+        X509v3 extensions:
+            X509v3 Basic Constraints: 
+                CA:FALSE
+            Netscape Cert Type: 
+                SSL Server
+            Netscape Comment: 
+                Easy-RSA Generated Server Certificate
+            X509v3 Subject Key Identifier: 
+                09:44:45:53:DA:D5:46:9E:53:A5:32:72:85:0A:59:76:65:9A:08:46
+            X509v3 Authority Key Identifier: 
+                keyid:9B:00:88:CA:80:78:CE:46:87:94:38:30:D8:24:D8:97:C1:A9:E3:CA
+                DirName:/C=US/ST=CA/L=SanFrancisco/O=Fort-Funston/OU=changeme/CN=changeme/name=changeme/emailAddress=mail@host.domain
+                serial:88:0D:4D:63:E8:58:B6:B6
+
+            X509v3 Extended Key Usage: 
+                TLS Web Server Authentication
+            X509v3 Key Usage: 
+                Digital Signature, Key Encipherment
+    Signature Algorithm: sha1WithRSAEncryption
+         23:8e:1d:0a:51:a9:fc:a7:71:69:a0:b8:02:8c:d1:7d:1b:52:
+         ba:e7:b9:3e:df:e4:30:63:71:03:cb:a5:2b:83:77:81:bd:ec:
+         5c:33:90:03:ec:95:d8:43:b8:d6:ce:6c:4f:2f:59:de:d8:fd:
+         27:1c:30:e4:c6:f6:9f:58:fd:22:3a:74:ec:23:17:e4:9b:9c:
+         16:79:f6:a0:c8:e0:ec:e5:3b:e3:46:72:1d:63:c1:59:30:6a:
+         37:5e:c2:45:ac:d6:de:86:b6:fe:a2:e8:0d:01:b4:5e:84:23:
+         84:21:89:86:0d:4f:0f:f1:58:39:14:13:00:c8:fb:26:1a:c3:
+         99:01
+-----BEGIN CERTIFICATE-----
+MIIEMDCCA5mgAwIBAgIBATANBgkqhkiG9w0BAQUFADCBojELMAkGA1UEBhMCVVMx
+CzAJBgNVBAgTAkNBMRUwEwYDVQQHEwxTYW5GcmFuY2lzY28xFTATBgNVBAoTDEZv
+cnQtRnVuc3RvbjERMA8GA1UECxMIY2hhbmdlbWUxETAPBgNVBAMTCGNoYW5nZW1l
+MREwDwYDVQQpEwhjaGFuZ2VtZTEfMB0GCSqGSIb3DQEJARYQbWFpbEBob3N0LmRv
+bWFpbjAeFw0xNDEyMTQxNDM0MTNaFw0yNDEyMTExNDM0MTNaMIGhMQswCQYDVQQG
+EwJVUzELMAkGA1UECBMCQ0ExFTATBgNVBAcTDFNhbkZyYW5jaXNjbzEVMBMGA1UE
+ChMMRm9ydC1GdW5zdG9uMREwDwYDVQQLEwhjaGFuZ2VtZTEQMA4GA1UEAxMHbmV1
+dHJvbjERMA8GA1UEKRMIY2hhbmdlbWUxHzAdBgkqhkiG9w0BCQEWEG1haWxAaG9z
+dC5kb21haW4wgZ8wDQYJKoZIhvcNAQEBBQADgY0AMIGJAoGBALCaGRIUPI5JBe3V
+i76B2X4dpJ+VO4brBBXtdH4NAh1giOPz3K10uKUrkUkfbj7caW+Kburloyb9Oh7z
+ZdKmeQiDAe/DR/U8aiuNvQqXTRWKDh54Ytci3sWiVWjvuB7FU+s0Ka1OCmwWDOY+
+pV07jNncVTzShJkYo3P5ulDkdLPRAgMBAAGjggFzMIIBbzAJBgNVHRMEAjAAMBEG
+CWCGSAGG+EIBAQQEAwIGQDA0BglghkgBhvhCAQ0EJxYlRWFzeS1SU0EgR2VuZXJh
+dGVkIFNlcnZlciBDZXJ0aWZpY2F0ZTAdBgNVHQ4EFgQUCURFU9rVRp5TpTJyhQpZ
+dmWaCEYwgdcGA1UdIwSBzzCBzIAUmwCIyoB4zkaHlDgw2CTYl8Gp48qhgaikgaUw
+gaIxCzAJBgNVBAYTAlVTMQswCQYDVQQIEwJDQTEVMBMGA1UEBxMMU2FuRnJhbmNp
+c2NvMRUwEwYDVQQKEwxGb3J0LUZ1bnN0b24xETAPBgNVBAsTCGNoYW5nZW1lMREw
+DwYDVQQDEwhjaGFuZ2VtZTERMA8GA1UEKRMIY2hhbmdlbWUxHzAdBgkqhkiG9w0B
+CQEWEG1haWxAaG9zdC5kb21haW6CCQCIDU1j6Fi2tjATBgNVHSUEDDAKBggrBgEF
+BQcDATALBgNVHQ8EBAMCBaAwDQYJKoZIhvcNAQEFBQADgYEAI44dClGp/KdxaaC4
+AozRfRtSuue5Pt/kMGNxA8ulK4N3gb3sXDOQA+yV2EO41s5sTy9Z3tj9Jxww5Mb2
+n1j9Ijp07CMX5JucFnn2oMjg7OU740ZyHWPBWTBqN17CRazW3oa2/qLoDQG0XoQj
+hCGJhg1PD/FYORQTAMj7JhrDmQE=
+-----END CERTIFICATE-----

@@ -17,6 +17,13 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     vb.customize ["modifyvm", :id, "--memory", "1024"]
   end
 
+  # Service machine
+  config.vm.define "services" do |node|
+    node.vm.hostname = "global-services"
+    node.vm.network "private_network",ip: "172.19.0.2", netmask: "255.255.0.0"
+    node.vm.provision :shell, path: "bootstrap-services.sh"
+  end
+
   # Gotham City Gateways
   (0..4).each do |i|
 		config.vm.define "gc-gw#{i}" do |node|
