@@ -124,9 +124,14 @@ machines.
 Now we can rollout some of the machines.
 
 ```
-# vagrant up gc-gw0 gc-gw1 mp-gc0 mp-gc1 sv-gw0 sv-gw0
+# vagrant up services gc-gw0 gc-gw1 mp-gc0 mp-gc1 sv-gw0 sv-gw0
 # # Get a cup of coffee, take a walk or do something interesting. This will take time...
 # vagrant ssh gc-gw0
 ```
 
 If you like to change the way machines are deployed, you can manipulate the _bootstrap.sh_.
+
+### The services machine
+
+This special machine simulates third party service provider, like anonvpn via openvpn.
+It has an own bootstrap file ``bootstrap-services.sh``.
