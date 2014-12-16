@@ -30,8 +30,7 @@ if [ "x${FFNORD_TESTING_REPO}" != "x" ]; then
   cd ffnord
   git remote add testing "$FFNORD_TESTING_REPO"
   git fetch testing
-  for branch in ${FFNORD_TESTING_REPO}; do
-  for branch in ${FFNORD_TESTING_BRANCHES}; do
+  for branch in ${FFNORD_TESTING_BRANCHES[@]}; do
     git merge --no-ff "testing/${branch}"
   done
 fi
