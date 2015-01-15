@@ -11,7 +11,7 @@ ffnord::mesh { 'mesh_ffgc':
   mesh_as          => 65003,
   mesh_code        => "ffgc",
   mesh_mac         => "de:ad:be:ef:ff:01",
-  mesh_ipv6        => "fdd7:e0f1:4128::ff01/64
+  mesh_ipv6        => "fdd7:e0f1:4128::ff01/64",
   mesh_ipv4        => "10.215.8.1/17",
   mesh_peerings    => "/root/mesh_peerings.yaml",
 
