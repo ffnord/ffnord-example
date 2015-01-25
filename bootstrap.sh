@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 
 MACHINE=$1
-FFNORD_TESTING_REPO=https://github.com/sargon/ffnord-puppet-gateway.git
-FFNORD_TESTING_BRANCHES=('generic-openvpn')
+FFNORD_TESTING_REPO=
+FFNORD_TESTING_BRANCHES=()
 
 cat > /etc/apt/sources.list << EOF
 deb http://ftp.de.debian.org/debian wheezy main
