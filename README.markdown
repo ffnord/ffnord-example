@@ -10,24 +10,22 @@ There are three villages inside our setting, named:
  * Smallville
 
 Inside these three villages Freifunk communities have emerged. These communities
-started to cooperate and also use an intercity as well as air based links
+started to cooperate and also use an intercity-VPN as well as air based links
 between the sites. Every community has decided basic values of its setup.
 
-Furthermore we rollout configuration details and with the help of vagrant,
+Furthermore we rollout configuration details and with the help of `vagrant`,
 are able to instantiate parts of the machines described below. So we
 have a nearly full featured multi-community environment to experiment with.
 
 ## The Communities 
 
-Gotham is the oldest of the three communities with hundreds of nodes and
-a evolved large backbone infrastructure. Including 5 existing gateway servers.
-And many services. Metropolis has been inspired by Gotham and has a strong
-growing community with 2 existing gateways. And finally Smallville has
-only few nodes and is an community in its beginning, has nearly no
-infrastructure by itself and relies on the help of the other communities
-in its region. So the other communities, both, have one of their gateways
-be a multi community gateway, and help Smallville to kickstart their
-infrastructure.
+**Gotham** is the oldest of the three communities with hundreds of nodes and
+an evolved large backbone infrastructure. Including 5 existing gateway servers.
+And many services. **Metropolis** has been inspired by Gotham and has a strong
+growing community with two existing gateways. And finally **Smallville**, a community in its beginning, has
+only a few nodes and has nearly no infrastructure by itself thus relies on the help of the other communities
+in its region. So the other communities, both have one of their gateways
+be a multi community gateway, and help Smallville to kickstart their infrastructure.
 
 ### Gotham City
 
@@ -109,29 +107,46 @@ infrastructure.
 
 ## Experimental environment
 
-To explore the described communities and to have an experimental environment for
-testing of new features to tools, you like to deploy in your real world community,
-you can setup parts of or the whole virtual world, using vagrant.
+### INSTALL
 
-Before you start to roll out the virtual machines you should proceed some setup step.
+install the packages vagrant and virtualbox, for example on debian:
+
+    sudo apt-get install vagrant virtualbox
+    
+Vagrant 1.5 or later is required, which is available on the [Vagrant download page](http://www.vagrantup.com/downloads.html)
+
+Now start your virtualbox service.
+
+To explore the described communities and to have an experimental environment for
+testing of new features and tools, you like to deploy in your real world community,
+you can setup parts of or the whole virtual world, using `vagrant`.
+
+Before you start to roll out the virtual machines you should proceed some setup steps:
+
+You need about 10 GB free diskspace (1.2 GB for each f the 8 virtual machines) in your homefolder in `~/VirtualBox VMs/`.
+
 The following will initialise a git repository in all fastd subdirs and the icvpn directory,
 these are the repositories of the communities. They will be checked out by the created
 machines.
-```
-# for dir in fastd/* icvpn; do ( cd ${dir} ; git init ; git add --all ; git commit -m "Initial commit" ) done
-```
+
+    for dir in fastd/* icvpn; do ( cd ${dir} ; git init ; git add --all ; git commit -m "Initial commit" ) done
 
 Now we can rollout some of the machines.
 
-```
-# vagrant up services gc-gw0 gc-gw1 mp-gc0 mp-gc1 sv-gw0 sv-gw0
-# # Get a cup of coffee, take a walk or do something interesting. This will take time...
-# vagrant ssh gc-gw0
-```
+    vagrant up services gc-gw0 gc-gw1 mp-gw0 mp-gw1
+    # Get a cup of coffee, take a walk or do something interesting. This will take time...
+    vagrant ssh gc-gw0
 
-If you like to change the way machines are deployed, you can manipulate the _bootstrap.sh_.
+Vagrant uses the configuration in `Vagrantfile` to create each machine. In our `Vagrantfile` there is defined that on each machine the shell script `bootstrap.sh` is executed on install, so if you like to change the way machines are deployed, you can manipulate the `bootstrap.sh`.
+
+On each machine this folder is mounted in the path `/vagrant/`. This way the configurations from the ffnord-example can be transfered on each machine.
+
+If you want to see the boot process on the VMs, you can enable the virtualbox gui in `Vagrantfile` by uncommenting the line
+
+    vb.gui = true
+
 
 ### The services machine
 
 This special machine simulates third party service provider, like anonvpn via openvpn.
-It has an own bootstrap file ``bootstrap-services.sh``.
+It has an own bootstrap file `bootstrap-services.sh`.
