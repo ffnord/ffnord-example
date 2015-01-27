@@ -13,6 +13,7 @@ ffnord::mesh { 'mesh_ffgc':
   mesh_mac         => "de:ad:be:ef:ff:01",
   mesh_ipv6        => "fd35:f308:a922::ff01/64",
   mesh_ipv4        => "10.35.5.1/19",
+  range_ipv4       => "10.35.0.0/16",
   mesh_peerings    => "/root/mesh_peerings.yaml",
 
   fastd_secret     => "/root/fastd_secret.conf",
