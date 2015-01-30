@@ -1,5 +1,10 @@
 #!/usr/bin/env bash
 
+# bootstrap script for all gateway simulation machines
+
+# enable output what is executed:
+set -x
+
 MACHINE=$1
 FFNORD_TESTING_REPO=
 FFNORD_TESTING_BRANCHES=()
@@ -16,6 +21,12 @@ deb http://ftp.de.debian.org/debian wheezy-updates main contrib
 deb-src http://ftp.de.debian.org/debian wheezy-updates main contrib
 EOF
 
+#Reconfigure apt so that it does not install additional packages
+echo 'APT::Install-Recommends "0" ; APT::Install-Suggests "0" ; '>>/etc/apt/apt.conf
+
+# install packages without user interaction:
+export DEBIAN_FRONTEND=noninteractive
+
 apt-get update
 apt-get install --no-install-recommends -y puppet git tcpdump mtr-tiny vim
 
@@ -23,6 +34,7 @@ puppet module install puppetlabs-stdlib
 puppet module install puppetlabs-apt
 puppet module install puppetlabs-vcsrepo
 
+# Download the puppet package ffnord
 cd /etc/puppet/modules
 git clone https://github.com/ffnord/ffnord-puppet-gateway ffnord
 
