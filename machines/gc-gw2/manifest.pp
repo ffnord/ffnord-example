@@ -32,6 +32,13 @@ ffnord::icvpn::setup { 'gotham_city2':
   tinc_keyfile       => "/root/tinc_rsa_key.priv"
 }
 
+class { 'ffnord::vpn::provider::generic':
+	name => 'vpn-service',
+	config => '/root/vpn-service'
+}
+
 class { 'ffnord::alfred': }
 
 class { 'ffnord::rsyslog': }
+
+class { 'ffnord::etckeeper': }
