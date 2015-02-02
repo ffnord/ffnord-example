@@ -7,6 +7,10 @@ FFNORD_TESTING_REPO=
 # and add the branches here (komma separated):
 FFNORD_TESTING_BRANCHES=()
 
+SCRIPTPATH="/vagrant"
+MACHINE_PATH="$SCRIPTPATH/machines/${MACHINE}/"
+mkdir -p "$MACHINE_PATH"
+
 cat > /etc/apt/sources.list << EOF
 deb http://ftp.de.debian.org/debian wheezy main
 deb-src http://ftp.de.debian.org/debian wheezy main
@@ -20,7 +24,8 @@ deb-src http://ftp.de.debian.org/debian wheezy-updates main contrib
 EOF
 
 apt-get update
-apt-get install --no-install-recommends -y puppet git tcpdump mtr-tiny vim
+apt-get install --no-install-recommends -y puppet git tcpdump mtr-tiny
+# optional apt-get install --no-install-recommends -y vim
 
 puppet module install puppetlabs-stdlib
 puppet module install puppetlabs-apt
@@ -38,7 +43,7 @@ if [ "x${FFNORD_TESTING_REPO}" != "x" ]; then
   done
 fi
 
-cd "/vagrant/machines/${MACHINE}/"
+cd "$MACHINE_PATH"
 cp -r * /root
 cd /root
 puppet apply manifest.pp --verbose

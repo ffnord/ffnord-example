@@ -2,6 +2,15 @@
 
 # bootstrap script for the external services simulation machine
 
+# enable output what is executed:
+set -x
+
+MACHINE=$1
+
+SCRIPTPATH="/vagrant"
+MACHINE_PATH="$SCRIPTPATH/machines/${MACHINE}/"
+mkdir -p "$MACHINE_PATH"
+
 cat > /etc/apt/sources.list << EOF
 deb http://ftp.de.debian.org/debian wheezy main
 deb-src http://ftp.de.debian.org/debian wheezy main
@@ -19,7 +28,7 @@ apt-get install --no-install-recommends -y \
         puppet git tcpdump mtr-tiny vim \
         openvpn tinc iptables-persistent
 
-cd "/vagrant/machines/services/"
+cd "$MACHINE_PATH"
 
 # Setup openvpn service
 cp -r openvpn /etc/openvpn/vpn-service
