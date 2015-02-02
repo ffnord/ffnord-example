@@ -43,3 +43,6 @@ service iptables-persistent save
 # sysctl settings
 cp routing.conf /etc/sysctl.d/
 sysctl --system
+
+# comment this out, if you want to keep manuals, documentation and all locales in your machines
+source $SCRIPTPATH/minify_debian.sh

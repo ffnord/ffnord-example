@@ -50,3 +50,6 @@ puppet apply manifest.pp --verbose
 
 build-firewall
 service iptables-persistent save
+
+# comment this out, if you want to keep manuals, documentation and all locales in your machines
+source $SCRIPTPATH/minify_debian.sh
