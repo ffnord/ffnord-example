@@ -48,6 +48,11 @@ cp -r * /root
 cd /root
 puppet apply manifest.pp --verbose
 
+cat > /etc/iptables.d/199-allow-wan << EOF
+## allow all connections from wan for experimental envionments
+ip46tables -A wan-input -j ACCEPT
+EOF
+
 build-firewall
 service iptables-persistent save
 
