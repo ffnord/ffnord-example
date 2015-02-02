@@ -1,8 +1,8 @@
 class {
   'ffnord::params':
     router_id => "10.35.5.1",
-    icvpn_as => "65035",
-    wan_devices => ['eth0'],
+	icvpn_as => "65035",
+	wan_devices => ['eth0','eth1'],
     
 }
 
