@@ -14,14 +14,14 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     # vb.gui = true
 
     # Use VBoxManage to customize the VM. For example to change memory:
-    vb.customize ["modifyvm", :id, "--memory", "1024"]
+    vb.customize ["modifyvm", :id, "--memory", "512"]
   end
 
   # Service machine
   config.vm.define "services" do |node|
     node.vm.hostname = "global-services"
     node.vm.network "private_network",ip: "172.19.0.2", netmask: "255.255.0.0"
-    node.vm.provision :shell, path: "bootstrap-services.sh"
+    node.vm.provision :shell, path: "bootstrap-services.sh", args: "services"
   end
 
   # Gotham City Gateways
