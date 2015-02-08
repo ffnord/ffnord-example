@@ -23,6 +23,15 @@ deb http://ftp.de.debian.org/debian wheezy-updates main contrib
 deb-src http://ftp.de.debian.org/debian wheezy-updates main contrib
 EOF
 
+#Reconfigure apt so that it does not install additional packages
+echo 'APT::Install-Recommends "0" ; APT::Install-Suggests "0" ; '>>/etc/apt/apt.conf
+
+# install packages without user interaction:
+export DEBIAN_FRONTEND=noninteractive
+
+# comment this out, if you want to keep manuals, documentation and all locales in your machines
+source $SCRIPTPATH/minify_debian.sh
+
 apt-get update
 apt-get install --no-install-recommends -y \
         puppet git tcpdump mtr-tiny vim \
