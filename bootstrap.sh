@@ -1,5 +1,10 @@
 #!/usr/bin/env bash
 
+# bootstrap script for all gateway simulation machines
+
+# enable output what is executed:
+set -x
+
 MACHINE=$1
 
 # optional: if you have brances in your own repo that should be merged ad the repo here:
