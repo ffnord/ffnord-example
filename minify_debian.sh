@@ -65,7 +65,9 @@ apt-get -y install deborphan
 while [ -n "$(deborphan --guess-all --libdevel)" ]; do
 	deborphan --guess-all --libdevel | xargs apt-get -y purge
 done
-apt-get -y purge deborphan dialog
+# apt-get -y purge deborphan dialog
+echo those were just a wild guess
+echo "--> nothing done"
 
 echo "==> Purge prior removed packages"
 dpkg -l|grep "^rc"|cut -f 3 -d" "|xargs apt-get -y purge
