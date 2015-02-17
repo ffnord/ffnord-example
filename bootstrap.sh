@@ -1,8 +1,20 @@
 #!/usr/bin/env bash
 
+# bootstrap script for all gateway simulation machines
+
+# enable output what is executed:
+set -x
+
 MACHINE=$1
+
+# optional: if you have brances in your own repo that should be merged ad the repo here:
 FFNORD_TESTING_REPO=
+# and add the branches here (komma separated):
 FFNORD_TESTING_BRANCHES=()
+
+SCRIPTPATH="/vagrant"
+MACHINE_PATH="$SCRIPTPATH/machines/${MACHINE}/"
+mkdir -p "$MACHINE_PATH"
 
 cat > /etc/apt/sources.list << EOF
 deb http://ftp.de.debian.org/debian wheezy main
@@ -16,13 +28,24 @@ deb http://ftp.de.debian.org/debian wheezy-updates main contrib
 deb-src http://ftp.de.debian.org/debian wheezy-updates main contrib
 EOF
 
+#Reconfigure apt so that it does not install additional packages
+echo 'APT::Install-Recommends "0" ; APT::Install-Suggests "0" ; '>>/etc/apt/apt.conf
+
+# install packages without user interaction:
+export DEBIAN_FRONTEND=noninteractive
+
+# comment this out, if you want to keep manuals, documentation and all locales in your machines
+source $SCRIPTPATH/minify_debian.sh
+
 apt-get update
-apt-get install --no-install-recommends -y puppet git tcpdump mtr-tiny vim
+apt-get install --no-install-recommends -y puppet git tcpdump mtr-tiny
+# optional apt-get install --no-install-recommends -y vim
 
 puppet module install puppetlabs-stdlib
 puppet module install puppetlabs-apt
 puppet module install puppetlabs-vcsrepo
 
+# Download the puppet package ffnord
 cd /etc/puppet/modules
 git clone https://github.com/ffnord/ffnord-puppet-gateway ffnord
 
@@ -35,10 +58,18 @@ if [ "x${FFNORD_TESTING_REPO}" != "x" ]; then
   done
 fi
 
-cd "/vagrant/machines/${MACHINE}/"
+cd "$MACHINE_PATH"
 cp -r * /root
 cd /root
 puppet apply manifest.pp --verbose
 
+cat > /etc/iptables.d/199-allow-wan << EOF
+## allow all connections from wan for experimental envionments
+ip46tables -A wan-input -j ACCEPT
+EOF
+
 build-firewall
 service iptables-persistent save
+
+# comment this out, if you want to keep manuals, documentation and all locales in your machines
+source $SCRIPTPATH/minify_debian.sh

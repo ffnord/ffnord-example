@@ -136,6 +136,8 @@ Now we can rollout some of the machines.
     vagrant up services gc-gw0 gc-gw1 mp-gw0 mp-gw1
     # Get a cup of coffee, take a walk or do something interesting. This will take time...
     vagrant ssh gc-gw0
+    
+In case the ssh login doesn't work: Vagrant creates all VMs with the user "vagrant" and the standard password "vagrant". 
 
 Vagrant uses the configuration in `Vagrantfile` to create each machine. In our `Vagrantfile` there is defined that on each machine the shell script `bootstrap.sh` is executed on install, so if you like to change the way machines are deployed, you can manipulate the `bootstrap.sh`.
 

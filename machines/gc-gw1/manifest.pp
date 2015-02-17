@@ -1,8 +1,8 @@
 class {
   'ffnord::params':
     router_id => "10.35.5.1",
-    icvpn_as => "65035",
-    wan_devices => ['eth0'],
+	icvpn_as => "65035",
+	wan_devices => ['eth0','eth1'],
     
 }
 
@@ -13,6 +13,7 @@ ffnord::mesh { 'mesh_ffgc':
   mesh_mac         => "de:ad:be:ef:ff:01",
   mesh_ipv6        => "fd35:f308:a922::ff01/64",
   mesh_ipv4        => "10.35.5.1/19",
+  range_ipv4       => "10.35.0.0/16",
   mesh_peerings    => "/root/mesh_peerings.yaml",
 
   fastd_secret     => "/root/fastd_secret.conf",
@@ -31,6 +32,13 @@ ffnord::icvpn::setup { 'gotham_city1':
   tinc_keyfile       => "/root/tinc_rsa_key.priv"
 }
 
+class { 'ffnord::vpn::provider::generic':
+	name => 'vpn-service',
+	config => '/root/vpn-service'
+}
+
 class { 'ffnord::alfred': }
 
 class { 'ffnord::rsyslog': }
+
+class { 'ffnord::etckeeper': }

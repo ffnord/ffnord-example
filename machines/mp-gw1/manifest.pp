@@ -2,17 +2,18 @@ class {
   'ffnord::params':
     router_id => "10.215.8.1",
     icvpn_as => "65003",
-    wan_devices => ['eth0'],
+	wan_devices => ['eth0','eth1'],
     
 }
 
-ffnord::mesh { 'mesh_ffgc':
-  mesh_name        => "Freifunk Gotham City",
+ffnord::mesh { 'mesh_ffmp':
+  mesh_name        => "Freifunk Metropolis",
   mesh_as          => 65003,
-  mesh_code        => "ffgc",
+  mesh_code        => "ffmp",
   mesh_mac         => "de:ad:be:ef:ff:01",
   mesh_ipv6        => "fdd7:e0f1:4128::ff01/64",
   mesh_ipv4        => "10.215.8.1/17",
+  range_ipv4       => "10.215.0.0/16",
   mesh_peerings    => "/root/mesh_peerings.yaml",
 
   fastd_secret     => "/root/fastd_secret.conf",
@@ -31,6 +32,13 @@ ffnord::icvpn::setup { 'gotham_city0':
   tinc_keyfile       => "/root/tinc_rsa_key.priv"
 }
 
+class { 'ffnord::vpn::provider::generic':
+	name => 'vpn-service',
+	config => '/root/vpn-service'
+}
+
 class { 'ffnord::alfred': }
 
 class { 'ffnord::rsyslog': }
+
+class { 'ffnord::etckeeper': }
