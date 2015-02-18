@@ -63,10 +63,12 @@ apt-get -y purge popularity-contest installation-report wireless-tools wpasuppli
 # Clean up orphaned packages with deborphan
 apt-get -y install deborphan
 while [ -n "$(deborphan --guess-all --libdevel)" ]; do
-	deborphan --guess-all --libdevel | xargs apt-get -y purge
+	echo "Those packages are guessed to be redundant by deborphan:"
+	deborphan --guess-all --libdevel | xargs 
+	# apt-get -y purge
 done
 # apt-get -y purge deborphan dialog
-echo those were just a wild guess
+echo "but this is just a wild guess"
 echo "--> nothing done"
 
 echo "==> Purge prior removed packages"
