@@ -41,8 +41,8 @@ apt-get update
 apt-get install --no-install-recommends -y puppet git tcpdump mtr-tiny
 # optional apt-get install --no-install-recommends -y vim
 
-puppet module install puppetlabs-stdlib
-puppet module install puppetlabs-apt
+puppet module install puppetlabs-stdlib 
+puppet module install puppetlabs-apt --version 1.5.1
 puppet module install puppetlabs-vcsrepo
 
 # Download the puppet package ffnord
