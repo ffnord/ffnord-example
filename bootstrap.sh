@@ -8,9 +8,9 @@ set -x
 MACHINE=$1
 
 # optional: if you have brances in your own repo that should be merged ad the repo here:
-FFNORD_TESTING_REPO=
+FFNORD_TESTING_REPO=https://github.com/rubo77/ffnord-puppet-gateway.git
 # and add the branches here (komma separated):
-FFNORD_TESTING_BRANCHES=()
+FFNORD_TESTING_BRANCHES=('multi_fastd')
 
 SCRIPTPATH="/vagrant"
 MACHINE_PATH="$SCRIPTPATH/machines/${MACHINE}/"
