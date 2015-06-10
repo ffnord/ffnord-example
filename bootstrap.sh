@@ -35,7 +35,7 @@ echo 'APT::Install-Recommends "0" ; APT::Install-Suggests "0" ; '>>/etc/apt/apt.
 export DEBIAN_FRONTEND=noninteractive
 
 # comment this out, if you want to keep manuals, documentation and all locales in your machines
-source $SCRIPTPATH/minify_debian.sh
+#source $SCRIPTPATH/minify_debian.sh
 
 apt-get update
 apt-get install --no-install-recommends -y puppet git tcpdump mtr-tiny
@@ -45,7 +45,7 @@ puppet module install puppetlabs-stdlib
 puppet module install puppetlabs-apt --version 1.5.1
 puppet module install puppetlabs-vcsrepo
 
-# Download the puppet package ffnord
+: '####### Download the puppet package ffnord ######'
 cd /etc/puppet/modules
 git clone https://github.com/ffnord/ffnord-puppet-gateway ffnord
 
@@ -72,4 +72,11 @@ build-firewall
 service iptables-persistent save
 
 # comment this out, if you want to keep manuals, documentation and all locales in your machines
-source $SCRIPTPATH/minify_debian.sh
+#source $SCRIPTPATH/minify_debian.sh
+
+service alfred start
+/etc/init.d/fastd restart
+
+: '####### Check for services if they are running correctly ######'
+service --status-all 2>&1 | egrep '(bird6|openvpn|fastd|alfred|bat)'
+pgrep -lf '(bird6|openvpn|fastd|alfred|bat)'
