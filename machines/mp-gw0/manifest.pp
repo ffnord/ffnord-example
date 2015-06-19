@@ -26,7 +26,6 @@ ffnord::mesh { 'mesh_ffmp':
 }
 
 ffnord::fastd { "ffmp_old":
-    mesh_name       => "mesh_ffmp",
     mesh_code       => "ffmp",
     mesh_interface  => "ffmp-old",
     mesh_mac        => "de:ad:be:ef:fd:00",

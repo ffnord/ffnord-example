@@ -26,7 +26,6 @@ ffnord::mesh { 'mesh_ffgc':
 }
 
 ffnord::fastd { "ffgc_old":
-    mesh_name       => "mesh_ffgc",
     mesh_code       => "ffgc",
     mesh_interface  => "ffgc-old",
     mesh_mac        => "de:ad:be:ef:fd:03",
