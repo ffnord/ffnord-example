@@ -18,7 +18,7 @@ ffnord::mesh { 'mesh_ffmp':
   mesh_peerings    => "/root/mesh_peerings.yaml",
 
   fastd_secret     => "/root/fastd_secret.conf",
-  fastd_port       => 10003,
+  fastd_port       => 11203,
   fastd_peers_git  => '/vagrant/fastd/mp/',
 
   dhcp_ranges => [ '10.215.0.2 10.215.7.254' ],
