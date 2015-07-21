@@ -3,3 +3,6 @@
 .vagrant/
 libvirt/cache
 libvirt/webroot
+d201*/
+vagrant-*/
+nohup.out

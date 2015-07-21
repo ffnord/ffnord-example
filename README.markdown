@@ -127,15 +127,20 @@ You need about 10 GB free diskspace (1.2 GB for each f the 8 virtual machines) i
 
 The following will initialise a git repository in all fastd subdirs and the icvpn directory,
 these are the repositories of the communities. They will be checked out by the created
-machines.
+machines:
 
     for dir in fastd/* icvpn; do ( cd ${dir} ; git init ; git add --all ; git commit -m "Initial commit" ) done
 
-Now we can rollout some of the machines.
+Now we can rollout some of the machines:
 
     vagrant up services gc-gw0 gc-gw1 mp-gw0 mp-gw1
     # Get a cup of coffee, take a walk or do something interesting. This will take time...
     vagrant ssh gc-gw0
+
+Look around the mashines. For example check for running services with:
+
+    service --status-all 2>&1 | egrep '(bird6|openvpn|fastd|alfred|bat)'
+    pgrep -lf '(bird6|openvpn|fastd|alfred|bat)'
     
 In case the ssh login doesn't work: Vagrant creates all VMs with the user "vagrant" and the standard password "vagrant". 
 

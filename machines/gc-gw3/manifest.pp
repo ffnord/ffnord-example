@@ -18,11 +18,22 @@ ffnord::mesh { 'mesh_ffgc':
   mesh_peerings    => "/root/mesh_peerings.yaml",
 
   fastd_secret     => "/root/fastd_secret.conf",
-  fastd_port       => 10035,
+  fastd_port       => 11235,
   fastd_peers_git  => '/vagrant/fastd/gc/',
 
   dhcp_ranges => [ '10.35.15.2 10.35.19.254' ],
   dns_servers => [ '10.35.0.1', '10.35.5.1', '10.35.10.1', '10.35.20.1' ],
+}
+
+ffnord::fastd { "ffgc_old":
+    mesh_code       => "ffgc",
+    mesh_interface  => "ffgc-old",
+    mesh_mac        => "de:ad:be:ef:fd:03",
+    vpn_mac         => "de:ad:be:ef:fc:03",
+    mesh_mtu        => 1426,
+    fastd_secret    => "/root/fastd_secret.conf",
+    fastd_port      => 10035,
+    fastd_peers_git => '/vagrant/fastd/gc/'
 }
 
 ffnord::icvpn::setup { 'gotham_city2':
