@@ -62,6 +62,9 @@ cd "$MACHINE_PATH"
 cp -r * /root
 cd /root
 puppet apply manifest.pp --verbose
+# workaround for dependeny cycle (issue #25):
+rm -rf /etc/fastd/*
+puppet apply manifest.pp --verbose
 
 cat > /etc/iptables.d/199-allow-wan << EOF
 ## allow all connections from wan for experimental envionments
