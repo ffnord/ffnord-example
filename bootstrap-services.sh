@@ -30,7 +30,7 @@ echo 'APT::Install-Recommends "0" ; APT::Install-Suggests "0" ; '>>/etc/apt/apt.
 export DEBIAN_FRONTEND=noninteractive
 
 # comment this out, if you want to keep manuals, documentation and all locales in your machines
-source $SCRIPTPATH/minify_debian.sh
+#source $SCRIPTPATH/minify_debian.sh
 
 apt-get update
 apt-get install --no-install-recommends -y \
@@ -54,4 +54,4 @@ cp routing.conf /etc/sysctl.d/
 sysctl --system
 
 # comment this out, if you want to keep manuals, documentation and all locales in your machines
-source $SCRIPTPATH/minify_debian.sh
+#source $SCRIPTPATH/minify_debian.sh
