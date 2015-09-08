@@ -7,8 +7,8 @@ set -x
 
 MACHINE=$1
 
-# optional: if you have brances in your own repo that should be merged ad the repo here:
-FFNORD_TESTING_REPO=
+# optional: if you have brances in your own repo that should be merged add the repo here (example: 'https://github.com/...')
+FFNORD_TESTING_REPO=''
 # and add the branches here (komma separated):
 FFNORD_TESTING_BRANCHES=('')
 
@@ -54,7 +54,7 @@ if [ "x${FFNORD_TESTING_REPO}" != "x" ]; then
   git remote add testing "$FFNORD_TESTING_REPO"
   git fetch testing
   for branch in ${FFNORD_TESTING_BRANCHES[@]}; do
-    git merge --no-ff "testing/${branch}"
+    git merge --no-ff -X theirs "testing/${branch}"
   done
 fi
 
@@ -78,5 +78,6 @@ service alfred start
 /etc/init.d/fastd restart
 
 : '####### Check for services if they are running correctly ######'
-service --status-all 2>&1 | egrep '(bird6|openvpn|fastd|alfred|bat)'
-pgrep -lf '(bird6|openvpn|fastd|alfred|bat)'
+SERVICES='(isc-dhcp-server|radvd|ntp|openvpn|rpcbind|fastd|bind9|bird6|bird|alfred|batadv-vis|named|tincd)'
+service --status-all 2>&1 | egrep $SERVICES
+pgrep -lf $SERVICES
