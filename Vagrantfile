@@ -8,7 +8,9 @@ VAGRANTFILE_API_VERSION = "2"
 Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
   # Every Vagrant virtual environment requires a box to build off of.
-  config.vm.box = "boxcutter/debian78-i386"
+  #config.vm.box = "boxcutter/debian78-i386" # wheezy 32bit
+  #config.vm.box = "boxcutter/debian78" # wheezy 64bit
+  config.vm.box = "boxcutter/debian81" # jessie 64bit
 
   config.vm.provider "virtualbox" do |vb|
     # Don't boot with headless mode

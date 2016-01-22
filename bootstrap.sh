@@ -8,24 +8,26 @@ set -x
 MACHINE=$1
 
 # optional: if you have brances in your own repo that should be merged add the repo here (example: 'https://github.com/...')
-FFNORD_TESTING_REPO=''
+FFNORD_TESTING_REPO='https://github.com/rubo77/ffnord-puppet-gateway'
 # and add the branches here (komma separated):
-FFNORD_TESTING_BRANCHES=('')
+FFNORD_TESTING_BRANCHES=('jessie')
 
 SCRIPTPATH="/vagrant"
 MACHINE_PATH="$SCRIPTPATH/machines/${MACHINE}/"
 mkdir -p "$MACHINE_PATH"
 
+LSBDISTCODENAME=jessie
+
 cat > /etc/apt/sources.list << EOF
-deb http://ftp.de.debian.org/debian wheezy main
-deb-src http://ftp.de.debian.org/debian wheezy main
+deb http://ftp.de.debian.org/debian $LSBDISTCODENAME main
+deb-src http://ftp.de.debian.org/debian $LSBDISTCODENAME main
 
-deb http://security.debian.org/ wheezy/updates main contrib
-deb-src http://security.debian.org/ wheezy/updates main contrib
+deb http://security.debian.org/ $LSBDISTCODENAME/updates main contrib
+deb-src http://security.debian.org/ $LSBDISTCODENAME/updates main contrib
 
-# wheezy-updates, previously known as 'volatile'
-deb http://ftp.de.debian.org/debian wheezy-updates main contrib
-deb-src http://ftp.de.debian.org/debian wheezy-updates main contrib
+# $LSBDISTCODENAME-updates, previously known as 'volatile'
+deb http://ftp.de.debian.org/debian $LSBDISTCODENAME-updates main contrib
+deb-src http://ftp.de.debian.org/debian $LSBDISTCODENAME-updates main contrib
 EOF
 
 #Reconfigure apt so that it does not install additional packages
@@ -37,8 +39,14 @@ export DEBIAN_FRONTEND=noninteractive
 # comment this out, if you want to keep manuals, documentation and all locales in your machines
 #source $SCRIPTPATH/minify_debian.sh
 
+# setup locales
+export LANGUAGE=en_US.UTF-8
+export LANG=en_US.UTF-8
+export LC_ALL=en_US.UTF-8
+locale-gen en_US.UTF-8
+
 apt-get update
-apt-get install --no-install-recommends -y puppet git tcpdump mtr-tiny
+apt-get install --no-install-recommends -y puppet git tcpdump mtr-tiny apt-transport-https
 # optional apt-get install --no-install-recommends -y vim
 
 puppet module install puppetlabs-stdlib
