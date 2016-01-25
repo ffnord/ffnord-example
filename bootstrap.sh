@@ -49,6 +49,9 @@ apt-get update
 apt-get install --no-install-recommends -y puppet git tcpdump mtr-tiny apt-transport-https
 # optional apt-get install --no-install-recommends -y vim
 
+if [ $LSBDISTCODENAME != "wheezy" ]; then
+  apt-get install -y systemd-sysv
+fi
 puppet module install puppetlabs-stdlib
 puppet module install puppetlabs-apt --version 1.5.1
 puppet module install puppetlabs-vcsrepo
@@ -92,3 +95,9 @@ service alfred start
 SERVICES='(isc-dhcp-server|radvd|ntp|openvpn|rpcbind|fastd|bind9|bird6|bird|alfred|batadv-vis|named|tincd)'
 service --status-all 2>&1 | egrep $SERVICES
 pgrep -lf $SERVICES
+
+# download check-services
+wget https://raw.githubusercontent.com/rubo77/ffnord-puppet-gateway/check-services/files/usr/local/bin/check-services
+chmod +x check-services 
+./check-services
+echo "if check-services fails add MESH_CODE=ffgc to othe top"
