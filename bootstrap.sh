@@ -52,6 +52,8 @@ apt-get install --no-install-recommends -y puppet git tcpdump mtr-tiny apt-trans
 
 if [ $LSBDISTCODENAME != "wheezy" ]; then
   apt-get install -y systemd-sysv
+  # TODO: solve this in puppet
+  modprobe ip_tables
 fi
 puppet module install puppetlabs-stdlib
 puppet module install puppetlabs-apt --version 1.5.1
