@@ -16,7 +16,7 @@ SCRIPTPATH="/vagrant"
 MACHINE_PATH="$SCRIPTPATH/machines/${MACHINE}/"
 mkdir -p "$MACHINE_PATH"
 
-LSBDISTCODENAME=jessie
+LSBDISTCODENAME='jessie'
 
 cat > /etc/apt/sources.list << EOF
 deb http://ftp.de.debian.org/debian $LSBDISTCODENAME main
@@ -46,7 +46,8 @@ export LC_ALL=en_US.UTF-8
 locale-gen en_US.UTF-8
 
 apt-get update
-apt-get install --no-install-recommends -y puppet git tcpdump mtr-tiny apt-transport-https
+apt-get install --no-install-recommends -y puppet git tcpdump mtr-tiny apt-transport-https \
+								vim-puppet tcpdump dnsutils realpath screen htop mlocate tig sudo cmake libpcap-dev
 # optional apt-get install --no-install-recommends -y vim
 
 if [ $LSBDISTCODENAME != "wheezy" ]; then

@@ -1,3 +1,8 @@
+package {
+  ['vim-puppet', 'tcpdump', 'dnsutils', 'realpath', 'screen', 'htop', 'mlocate', 'tig', 'sudo', 'mtr-tiny', 'cmake', 'libpcap-dev']:
+     ensure => installed;
+}
+
 class {
   'ffnord::params':
     router_id => "10.35.0.1",
