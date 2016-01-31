@@ -54,6 +54,7 @@ if [ $LSBDISTCODENAME != "wheezy" ]; then
   apt-get install -y systemd-sysv
   # TODO: solve this in puppet
   modprobe ip_tables
+  modprobe nf_conntrack
 fi
 puppet module install puppetlabs-stdlib
 puppet module install puppetlabs-apt --version 1.5.1
@@ -91,13 +92,22 @@ service iptables-persistent save
 # comment this out, if you want to keep manuals, documentation and all locales in your machines
 #source $SCRIPTPATH/minify_debian.sh
 
-service alfred start
-/etc/init.d/fastd restart
+service openvpn restart
+
+if [ $LSBDISTCODENAME != "wheezy" ]; then
+	#workaround restart puppet run after openvpn restart
+	puppet apply manifest.pp --verbose
+fi
+
+service alfred restart
+service isc-dhcp-server restart
+service fastd restart
 
 : '####### Check for services if they are running correctly ######'
 SERVICES='(isc-dhcp-server|radvd|ntp|openvpn|rpcbind|fastd|bind9|bird6|bird|alfred|batadv-vis|named|tincd)'
 service --status-all 2>&1 | egrep $SERVICES
 pgrep -lf $SERVICES
+ps aux | egrep $SERVICES
 
 # download check-services
 wget https://raw.githubusercontent.com/rubo77/ffnord-puppet-gateway/check-services/files/usr/local/bin/check-services
