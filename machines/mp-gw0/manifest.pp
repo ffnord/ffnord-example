@@ -1,9 +1,18 @@
 class {
   'ffnord::params':
-    router_id => "10.215.0.1",
-    icvpn_as => "65003",
-	wan_devices => ['eth0','eth1'],
-    
+  router_id => "10.215.0.1",      # The id of this router, probably the ipv4 address
+                                  # of the mesh device of the providing community
+  icvpn_as => "65003",            # The as of the providing community
+  wan_devices => ['eth0','eth1'], # An array of devices which should be in the wan zone
+
+  wmem_default => 87380,          # Define the default socket send buffer
+  wmem_max     => 12582912,       # Define the maximum socket send buffer
+  rmem_default => 87380,          # Define the default socket recv buffer
+  rmem_max     => 12582912,       # Define the maximum socket recv buffer
+  
+  gw_control_ips => "217.70.197.1 89.27.152.1 138.201.16.163 8.8.8.8", # Define target to ping against for function check
+
+  max_backlog  => 5000,           # Define the maximum packages in buffer
 }
 
 ffnord::mesh { 'mesh_ffmp':
@@ -22,7 +31,7 @@ ffnord::mesh { 'mesh_ffmp':
   fastd_peers_git  => '/vagrant/fastd/mp/',
 
   dhcp_ranges => [ '10.215.0.2 10.215.7.254' ],
-  dns_servers => [ '10.215.8.1' ],
+  dns_servers => [ '10.215.0.1' ],
 }
 
 ffnord::fastd { "ffmp_old":
