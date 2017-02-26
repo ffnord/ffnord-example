@@ -53,6 +53,6 @@ ffnord::icvpn::setup { 'gotham_city2':
   tinc_keyfile       => "/root/tinc_rsa_key.priv"
 }
 
-class { 'ffnord::alfred': }
+#class { 'ffnord::alfred': }
 
 class { 'ffnord::rsyslog': }
