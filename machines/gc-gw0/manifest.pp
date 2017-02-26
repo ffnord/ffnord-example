@@ -58,7 +58,9 @@ class { 'ffnord::vpn::provider::generic':
   config => '/root/vpn-service'
 }
 
-#class { 'ffnord::alfred': }
+class { 'ffnord::alfred': 
+  master => true
+}
 
 class { 'ffnord::rsyslog': }
 
