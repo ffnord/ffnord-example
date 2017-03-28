@@ -41,7 +41,7 @@ apt-get update
 apt-get install --no-install-recommends -y puppet git tcpdump mtr-tiny
 # optional apt-get install --no-install-recommends -y vim
 
-puppet module install puppetlabs-stdlib
+puppet module install puppetlabs-stdlib --version 4.15.0
 puppet module install puppetlabs-apt --version 1.5.1
 puppet module install puppetlabs-vcsrepo --version 1.3.2
 # usually installed on a gateway, but not needed in this example case:
