@@ -8,7 +8,7 @@ set -x
 MACHINE=$1
 
 # optional: if you have brances in your own repo that should be merged add the repo here (example: 'https://github.com/...')
-FFNORD_TESTING_REPO='https://github.com/rubo77/ffnord-puppet-gateway'
+FFNORD_TESTING_REPO='https://github.com/ffnord/ffnord-puppet-gateway'
 # and add the branches here (komma separated):
 FFNORD_TESTING_BRANCHES=('jessie')
 
