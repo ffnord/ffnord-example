@@ -51,7 +51,7 @@ apt-get install --no-install-recommends -y puppet git tcpdump mtr-tiny apt-trans
 # optional apt-get install --no-install-recommends -y vim
 
 if [ $LSBDISTCODENAME != "wheezy" ]; then
-  apt-get install -y systemd-sysv
+  apt-get install -y systemd-sysv libssl-dev
   # TODO: solve this in puppet
   modprobe ip_tables
   modprobe nf_conntrack
