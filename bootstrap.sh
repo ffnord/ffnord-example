@@ -7,16 +7,17 @@ set -x
 
 MACHINE=$1
 
-# optional: if you have brances in your own repo that should be merged add the repo here (example: 'https://github.com/...')
-FFNORD_TESTING_REPO='https://github.com/ffnord/ffnord-puppet-gateway'
+# optional: if you have brances in your own repo that should be merged add the repo here
+# example: FFNORD_TESTING_REPO='https://github.com/ffnord/ffnord-puppet-gateway'
+FFNORD_TESTING_REPO=''
 # and add the branches here (komma separated):
-FFNORD_TESTING_BRANCHES=('jessie')
+FFNORD_TESTING_BRANCHES=('')
 
 SCRIPTPATH="/vagrant"
 MACHINE_PATH="$SCRIPTPATH/machines/${MACHINE}/"
 mkdir -p "$MACHINE_PATH"
 
-LSBDISTCODENAME='jessie'
+LSBDISTCODENAME='wheezy'
 
 cat > /etc/apt/sources.list << EOF
 deb http://ftp.de.debian.org/debian $LSBDISTCODENAME main
