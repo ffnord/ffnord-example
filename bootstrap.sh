@@ -48,9 +48,11 @@ locale-gen en_US.UTF-8
 
 apt-get update
 apt-get install --no-install-recommends -y puppet git tcpdump mtr-tiny apt-transport-https \
-								vim-puppet tcpdump dnsutils realpath screen htop mlocate tig sudo cmake libpcap-dev
+								 tcpdump dnsutils realpath screen htop mlocate tig sudo cmake libpcap-dev
 # optional apt-get install --no-install-recommends -y vim
-
+if [ $LSBDISTCODENAME = "wheezy" ] || [ $LSBDISTCODENAME = "jessie" ]; then
+  apt-get install -y vim-puppet
+fi
 if [ $LSBDISTCODENAME != "wheezy" ]; then
   apt-get install -y systemd-sysv libssl-dev
   # TODO: solve this in puppet
@@ -58,13 +60,14 @@ if [ $LSBDISTCODENAME != "wheezy" ]; then
   modprobe nf_conntrack
 fi
 puppet module install puppetlabs-stdlib --version 4.15.0
-puppet module install puppetlabs-apt --version 1.5.1
+puppet module install puppetlabs-apt --version 1.5.2
 puppet module install puppetlabs-vcsrepo --version 1.3.2
 # usually installed on a gateway, but not needed in this example case:
 #puppet module install saz-sudo
 #puppet module install torrancew-account
 
 : '####### Download the puppet package ffnord ######'
+mkdir -p /etc/puppet/modules
 cd /etc/puppet/modules
 git clone https://github.com/ffnord/ffnord-puppet-gateway ffnord
 
