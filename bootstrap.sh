@@ -67,8 +67,11 @@ puppet module install puppetlabs-vcsrepo --version 1.3.2
 #puppet module install torrancew-account
 
 : '####### Download the puppet package ffnord ######'
-mkdir -p /etc/puppet/modules
-cd /etc/puppet/modules
+if [ $LSBDISTCODENAME = "wheezy" ] || [ $LSBDISTCODENAME = "jessie" ]; then
+	cd /etc/puppet/modules
+else
+	cd /usr/share/puppet/modules
+fi
 git clone https://github.com/ffnord/ffnord-puppet-gateway ffnord
 
 if [ "x${FFNORD_TESTING_REPO}" != "x" ]; then
