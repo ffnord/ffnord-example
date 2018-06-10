@@ -17,7 +17,7 @@ SCRIPTPATH="/vagrant"
 MACHINE_PATH="$SCRIPTPATH/machines/${MACHINE}/"
 mkdir -p "$MACHINE_PATH"
 
-LSBDISTCODENAME='jessie'
+LSBDISTCODENAME='wheezy'
 
 cat > /etc/apt/sources.list << EOF
 deb http://ftp.de.debian.org/debian $LSBDISTCODENAME main
