@@ -18,6 +18,9 @@ class {
   gw_control_ips => "217.70.197.1 89.27.152.1 138.201.16.163 8.8.8.8", # Define target to ping against for function check
 
   max_backlog  => 5000,           # Define the maximum packages in buffer
+  include_bird4 => false,
+  maintenance => 1,
+  batman_version => 15,
 }
 
 ffnord::mesh { 'mesh_ffgc':
